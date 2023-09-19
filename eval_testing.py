@@ -1,9 +1,17 @@
+import requests
+requests.packages.urllib3.disable_warnings()
+
 print("Test Eval")
-equation = 'x1 + 2* x2 + x3'
-def modify_value(x1,x2,x3):
+def modify_value(x1,x2,x3, equation):
     result = eval(equation)
     print(result)
     return result
 
-a = 5
-modify_value(a,2,3)
+def init_global_equation():
+    headers = {}
+    aio_url = "https://io.adafruit.com/api/v2/kiin11/feeds/equation"
+    x =requests.get(url=aio_url, headers = headers, verify = False)
+    data = x.json()
+    global_equation = data["last_value"]
+    print("Get lastest value: ", global_equation)
+    return  global_equation
