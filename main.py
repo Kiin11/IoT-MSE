@@ -8,6 +8,23 @@ import cv2  # Install opencv-python
 from simpleAI import *
 from physical import *
 
+import argparse
+
+
+AIO_FEED_ID = ["button1", "button2"]
+AIO_USERNAME = ""
+AIO_KEY = ""
+
+def main():
+    parser = argparse.ArgumentParser(description='Python script with user and password arguments')
+    parser.add_argument('-user', required=True, help='Username')
+    parser.add_argument('-key', required=True, help='Password')
+    args = parser.parse_args()
+
+    # Access the arguments
+    AIO_USERNAME = args.user
+    AIO_KEY = args.key
+
 # try:
 #     # ls /dev/tty* lenh tim cong com
 #     ser = serial.Serial(port="/dev/tty.usbserial-A50285BI", baudrate=9600)
@@ -15,10 +32,6 @@ from physical import *
 #     print("Can not open the port")
 
 camera_detect_model = CameraDetector()
-
-AIO_FEED_ID = ["button1", "button2"]
-AIO_USERNAME = "kiin11"
-AIO_KEY = "aio_ThpH34nUZUqpwpS4VMaBnrYKXQUW"
 
 def connected(client):
     print("Ket noi thanh cong ...")
@@ -52,6 +65,7 @@ sensor_type = 0
 ai_result = ""
 previous_result = ""
 
+main()
 while True:
     # Gửi thông số cho các sensor
     # counter = counter - 1
