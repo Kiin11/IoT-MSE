@@ -5,6 +5,11 @@ def onClick():
     name = txtA.get("1.0", "end")
     age = txtB.get("1.0", "end")
 
+def set_text_value(str):
+    txtA.delete(1.0, tk.END)  # Xóa nội dung hiện tại trong Text widget
+    # new_text = "Đây là nội dung mới."  # Thay thế bằng nội dung bạn muốn đặt
+    txtA.insert(tk.END, str)
+
 
 window = tk.Tk()
 window.title("Python app")
