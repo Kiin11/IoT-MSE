@@ -1,11 +1,12 @@
 import time
 from Physical.physical import *
-class Temperature:
-    def __int__(self):
-        print("Run Task do nhiet do")
 
-    def readTemperature(self, ser):
+class Moisture:
+    def __int__(self):
+        print("Moisture")
+
+    def readMoisture(self, ser):
         serial_read_data(ser)
-        ser.write(soil_temperature)
+        ser.write(soil_moisture)
         time.sleep(1)
         return serial_read_data(ser)

@@ -2,6 +2,7 @@ print("Hello AIoT")
 import sys
 from Adafruit_IO import MQTTClient
 from Physical.temperature import *
+from Physical.moisture import *
 
 from scheduler import *
 
@@ -69,11 +70,11 @@ scheduler = Scheduler()
 scheduler.SCH_Init()
 
 temp = Temperature(ser)
-# moisture = readMoisture(ser)
+moisture = Moisture(ser)
 
 
-scheduler.SCH_Add_Task(temp,1000,5000)
-# scheduler.SCH_Add_Task(moisture,3000,5000)
+scheduler.SCH_Add_Task(temp.readTemperature,1000,5000)
+scheduler.SCH_Add_Task(moisture.readMoisture,3000,5000)
 
 # main()
 while True:

@@ -18,17 +18,6 @@ relay2_OFF = [15, 6, 0, 0, 0, 0, 136, 228]
 soil_temperature = [1, 3, 0, 6, 0, 1, 100, 11]
 soil_moisture = [1, 3, 0, 7, 0, 1, 53, 203]
 
-def readTemperature(ser_arg):
-    serial_read_data(ser_arg)
-    ser_arg.write(soil_temperature)
-    time.sleep(1)
-    return serial_read_data(ser_arg)
-
-def readMoisture(ser_arg):
-    serial_read_data(ser_arg)
-    ser_arg.write(soil_moisture)
-    time.sleep(1)
-    return serial_read_data(ser_arg)
 def setDevice1(ser_arg,state):
     if state:
         ser_arg.write(relay1_ON)
