@@ -1,5 +1,6 @@
 import time
 from Physical.physical import *
+import view
 class Temperature:
     def __int__(self):
         print("Run Task do nhiet do")
@@ -8,5 +9,5 @@ class Temperature:
         serial_read_data(ser)
         ser.write(soil_temperature)
         time.sleep(1)
-        print("Temperature",serial_read_data(ser))
-        return serial_read_data(ser)
+        view.txtA = serial_read_data(ser) / 100
+        # return serial_read_data(ser)

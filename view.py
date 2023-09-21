@@ -11,13 +11,13 @@ window.title("Python app")
 # window.geometry("600x400")
 window.attributes('-fullscreen', True)
 
-labelA = tk.Label(text="Student name")
+labelA = tk.Label(text="Nhiet do")
 labelA.place(x=5, y=5, width=80, height=30)
 
 txtA = tk.Text()
 txtA.place(x=85, y=5, width=100, height=30)
 
-labelB = tk.Label(text="Student Age")
+labelB = tk.Label(text="Do Am")
 labelB.place(x=5, y=35, width=80, height=30)
 
 txtB = tk.Text()
