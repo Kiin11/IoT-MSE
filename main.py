@@ -1,13 +1,7 @@
-import random
-import time
-
 print("Hello AIoT")
 import sys
 from Adafruit_IO import MQTTClient
-import cv2  # Install opencv-python
-from simpleAI import *
-from physical import *
-from eval_testing import *
+from Physical.temperature import *
 
 from scheduler import *
 
@@ -74,12 +68,12 @@ previous_result = ""
 scheduler = Scheduler()
 scheduler.SCH_Init()
 
-temp = readTemperature(ser)
-moisture = readMoisture(ser)
+temp = Temperature(ser)
+# moisture = readMoisture(ser)
 
 
 scheduler.SCH_Add_Task(temp,1000,5000)
-scheduler.SCH_Add_Task(moisture,3000,5000)
+# scheduler.SCH_Add_Task(moisture,3000,5000)
 
 # main()
 while True:
