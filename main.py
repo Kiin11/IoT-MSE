@@ -17,13 +17,20 @@ global_equation = ""
 
 def main():
     parser = argparse.ArgumentParser(description='Python script with user and password arguments')
-    parser.add_argument('-key', required=True, help='key')
+    parser.add_argument('-key', required=True, help='password')
     args = parser.parse_args()
 
     # Access the arguments
     AIO_KEY = args.key
 
     print(AIO_KEY)
+    client = MQTTClient(AIO_USERNAME, AIO_KEY)
+    client.on_connect = connected
+    client.on_disconnect = disconnected
+    client.on_message = message
+    client.on_subscribe = subscribe
+    client.connect()
+    client.loop_background()
 
 try:
     # ls /dev/tty* lenh tim cong com
@@ -55,13 +62,7 @@ def message(client , feed_id , payload):
         global_equation = payload
         print(global_equation)
 
-client = MQTTClient(AIO_USERNAME , AIO_KEY)
-client.on_connect = connected
-client.on_disconnect = disconnected
-client.on_message = message
-client.on_subscribe = subscribe
-client.connect()
-client.loop_background()
+
 counter = 10
 counter_ai = 5
 sensor_type = 0
