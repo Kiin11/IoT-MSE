@@ -6,8 +6,8 @@ class Moisture:
         print("Moisture")
 
     def readMoisture(self):
-        serial_read_data(serial)
-        serial.write(soil_moisture)
+        serial_read_data(ser)
+        ser.write(soil_moisture)
         time.sleep(1)
-        print("Moisture",serial_read_data(serial))
-        return serial_read_data(serial)
+        print("Moisture",serial_read_data(ser))
+        return serial_read_data(ser)

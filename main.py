@@ -16,7 +16,7 @@ global_equation = ""
 
 def main():
     parser = argparse.ArgumentParser(description='Python script with user and password arguments')
-    parser.add_argument('-key', required=True, help='Password')
+    parser.add_argument('-key', required=True, help='key')
     args = parser.parse_args()
 
     # Access the arguments
@@ -75,7 +75,7 @@ moisture = Moisture()
 scheduler.SCH_Add_Task(temp.readTemperature,1000,5000)
 scheduler.SCH_Add_Task(moisture.readMoisture,3000,5000)
 
-# main()
+main()
 while True:
     # Gửi thông số cho các sensor
     # counter = counter - 1
@@ -121,3 +121,4 @@ while True:
     time.sleep(0.1)
 
     pass
+
