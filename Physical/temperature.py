@@ -9,5 +9,5 @@ class Temperature:
         serial_read_data(ser)
         ser.write(soil_temperature)
         time.sleep(1)
-        view.set_text_value(serial_read_data(ser)/100)
+        view.set_text_value_A(serial_read_data(ser)/100)
         # return serial_read_data(ser)
