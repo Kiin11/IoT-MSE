@@ -8,4 +8,5 @@ class Temperature:
         serial_read_data(ser)
         ser.write(soil_temperature)
         time.sleep(1)
+        print("Temperature",serial_read_data(ser))
         return serial_read_data(ser)

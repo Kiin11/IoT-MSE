@@ -9,4 +9,5 @@ class Moisture:
         serial_read_data(ser)
         ser.write(soil_moisture)
         time.sleep(1)
+        print("Moisture",serial_read_data(ser))
         return serial_read_data(ser)
