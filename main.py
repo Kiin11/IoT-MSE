@@ -15,13 +15,13 @@ AIO_USERNAME = "kiin11"
 AIO_KEY = ""
 global_equation = ""
 
-def main(self):
+def main:
     parser = argparse.ArgumentParser(description='Python script with user and password arguments')
     parser.add_argument('-key', required=True, help='key')
     args = parser.parse_args()
 
     # Access the arguments
-    self.AIO_KEY = args.key
+    AIO_KEY = args.key
 
     print(AIO_KEY)
 
