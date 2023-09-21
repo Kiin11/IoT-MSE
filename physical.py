@@ -8,8 +8,7 @@ print("Sensors and Actuators")
 #     # ls /dev/tty* lenh tim cong com
 #     ser = serial.Serial(port="/dev/tty.usbserial-A50285BI", baudrate=9600)
 # except:
-#     print("Can not open the port")
-
+#     print("Can not open the port")i
 relay1_ON = [0, 6, 0, 0, 0, 255, 200, 91]
 relay1_OFF = [0, 6, 0, 0, 0, 0, 136, 27]
 

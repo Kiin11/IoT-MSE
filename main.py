@@ -9,12 +9,14 @@ from simpleAI import *
 from physical import *
 from eval_testing import *
 
+from scheduler import *
+
 import argparse
 
 
 AIO_FEED_ID = ["button1", "button2", "sensor1","sensor2","sensor3","equation"]
 AIO_USERNAME = "kiin11"
-AIO_KEY = "aio_VwTu54UywW7LeclRJBa4AecSZXpG"
+AIO_KEY = ""
 global_equation = ""
 
 def main():
@@ -27,11 +29,11 @@ def main():
 
     print(AIO_KEY)
 
-# try:
-#     # ls /dev/tty* lenh tim cong com
-#     ser = serial.Serial(port="/dev/tty.usbserial-A50285BI", baudrate=9600)
-# except:
-#     print("Can not open the port")
+try:
+    # ls /dev/tty* lenh tim cong com
+    ser = serial.Serial(port="/dev/ttyUSB0", baudrate=9600)
+except:
+    print("Can not open the port")
 
 # camera_detect_model = CameraDetector()
 
@@ -69,6 +71,15 @@ counter_ai = 5
 sensor_type = 0
 ai_result = ""
 previous_result = ""
+scheduler = Scheduler()
+scheduler.SCH_Init()
+
+temp = readTemperature(ser)
+moisture = readMoisture(ser)
+
+
+scheduler.SCH_Add_Task(temp,1000,5000)
+scheduler.SCH_Add_Task(moisture,3000,5000)
 
 # main()
 while True:
@@ -101,16 +112,18 @@ while True:
     # client.publish("sensor2", readMoisture(ser)/100)
     # Lay du lieu
 
-    equation = init_global_equation()
+    # equation = init_global_equation()
+    #
+    # x1 = random.randint(10,30)
+    # x2 = random.randint(10,30)
+    # x3 = random.randint(10,30)
+    #
+    # client.publish("sensor4", modify_value(x1,x2,x3, equation))
+    #
+    # print(x1, x2, x3)
+    scheduler.SCH_Update()
+    scheduler.SCH_Dispatch_Tasks()
 
-    x1 = random.randint(10,30)
-    x2 = random.randint(10,30)
-    x3 = random.randint(10,30)
-
-    client.publish("sensor4", modify_value(x1,x2,x3, equation))
-
-    print(x1, x2, x3)
-
-    time.sleep(5)
+    time.sleep(0.1)
 
     pass
