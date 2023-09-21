@@ -3,6 +3,7 @@ import sys
 from Adafruit_IO import MQTTClient
 from Physical.temperature import *
 from Physical.moisture import *
+import view
 
 from scheduler import *
 
@@ -14,13 +15,13 @@ AIO_USERNAME = "kiin11"
 AIO_KEY = ""
 global_equation = ""
 
-def main():
+def main(self):
     parser = argparse.ArgumentParser(description='Python script with user and password arguments')
     parser.add_argument('-key', required=True, help='key')
     args = parser.parse_args()
 
     # Access the arguments
-    AIO_KEY = args.key
+    self.AIO_KEY = args.key
 
     print(AIO_KEY)
 
@@ -117,6 +118,7 @@ while True:
     # print(x1, x2, x3)
     scheduler.SCH_Update()
     scheduler.SCH_Dispatch_Tasks()
+    view.window.update()
 
     time.sleep(0.1)
 
