@@ -10,5 +10,5 @@ class Moisture:
         serial_read_data(ser)
         ser.write(soil_moisture)
         time.sleep(1)
-        view.txtB = serial_read_data(ser)
+        view.txtB.update(serial_read_data(ser) / 100)
         # return serial_read_data(ser)
