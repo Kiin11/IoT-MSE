@@ -18,6 +18,12 @@ relay2_OFF = [15, 6, 0, 0, 0, 0, 136, 228]
 soil_temperature = [1, 3, 0, 6, 0, 1, 100, 11]
 soil_moisture = [1, 3, 0, 7, 0, 1, 53, 203]
 
+try:
+    # ls /dev/tty* lenh tim cong com
+    ser = serial.Serial(port="/dev/ttyUSB0", baudrate=9600)
+except:
+    print("Can not open the port")
+
 def setDevice1(ser_arg,state):
     if state:
         ser_arg.write(relay1_ON)

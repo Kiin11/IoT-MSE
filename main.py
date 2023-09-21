@@ -24,8 +24,6 @@ def main():
 
     print(AIO_KEY)
 
-ser = ""
-
 try:
     # ls /dev/tty* lenh tim cong com
     ser = serial.Serial(port="/dev/ttyUSB0", baudrate=9600)
