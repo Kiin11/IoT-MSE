@@ -69,8 +69,8 @@ previous_result = ""
 scheduler = Scheduler()
 scheduler.SCH_Init()
 
-temp = Temperature(ser)
-moisture = Moisture(ser)
+temp = Temperature()
+moisture = Moisture()
 
 scheduler.SCH_Add_Task(temp.readTemperature,1000,5000)
 scheduler.SCH_Add_Task(moisture.readMoisture,3000,5000)
