@@ -24,6 +24,8 @@ def main():
 
     print(AIO_KEY)
 
+ser = ""
+
 try:
     # ls /dev/tty* lenh tim cong com
     ser = serial.Serial(port="/dev/ttyUSB0", baudrate=9600)
@@ -71,7 +73,6 @@ scheduler.SCH_Init()
 
 temp = Temperature(ser)
 moisture = Moisture(ser)
-
 
 scheduler.SCH_Add_Task(temp.readTemperature,1000,5000)
 scheduler.SCH_Add_Task(moisture.readMoisture,3000,5000)
