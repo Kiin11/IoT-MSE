@@ -16,28 +16,6 @@ AIO_KEY = ""
 global_equation = ""
 
 
-temp = Temperature()
-moisture = Moisture()
-
-def main():
-    parser = argparse.ArgumentParser(description='Python script with user and password arguments')
-    parser.add_argument('-key', required=True, help='password')
-    args = parser.parse_args()
-
-    # Access the arguments
-    AIO_KEY = args.key
-
-    print(AIO_KEY)
-    client = MQTTClient(AIO_USERNAME, AIO_KEY)
-    client.on_connect = connected
-    client.on_disconnect = disconnected
-    client.on_message = message
-    client.on_subscribe = subscribe
-    client.connect()
-    client.loop_background()
-
-    temp = Temperature(client)
-
 try:
     # ls /dev/tty* lenh tim cong com
     ser = serial.Serial(port="/dev/ttyUSB0", baudrate=9600)
@@ -78,10 +56,29 @@ scheduler = Scheduler()
 scheduler.SCH_Init()
 
 
+parser = argparse.ArgumentParser(description='Python script with user and password arguments')
+parser.add_argument('-key', required=True, help='password')
+args = parser.parse_args()
+
+# Access the arguments
+AIO_KEY = args.key
+
+print(AIO_KEY)
+client = MQTTClient(AIO_USERNAME, AIO_KEY)
+client.on_connect = connected
+client.on_disconnect = disconnected
+client.on_message = message
+client.on_subscribe = subscribe
+client.connect()
+client.loop_background()
+
+temp = Temperature(client)
+moisture = Moisture(client)
+
 scheduler.SCH_Add_Task(temp.readTemperature,3000,5000)
 scheduler.SCH_Add_Task(moisture.readMoisture,3000,5000)
 
-main()
+
 while True:
     # Gửi thông số cho các sensor
     # counter = counter - 1
