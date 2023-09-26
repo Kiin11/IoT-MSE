@@ -15,6 +15,10 @@ AIO_USERNAME = "kiin11"
 AIO_KEY = ""
 global_equation = ""
 
+
+temp = Temperature()
+moisture = Moisture()
+
 def main():
     parser = argparse.ArgumentParser(description='Python script with user and password arguments')
     parser.add_argument('-key', required=True, help='password')
@@ -31,6 +35,8 @@ def main():
     client.on_subscribe = subscribe
     client.connect()
     client.loop_background()
+
+    temp = Temperature(client)
 
 try:
     # ls /dev/tty* lenh tim cong com
@@ -71,10 +77,8 @@ previous_result = ""
 scheduler = Scheduler()
 scheduler.SCH_Init()
 
-temp = Temperature()
-moisture = Moisture()
 
-scheduler.SCH_Add_Task(temp.readTemperature,1000,5000)
+scheduler.SCH_Add_Task(temp.readTemperature,3000,5000)
 scheduler.SCH_Add_Task(moisture.readMoisture,3000,5000)
 
 main()
