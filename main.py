@@ -72,8 +72,10 @@ client.on_subscribe = subscribe
 client.connect()
 client.loop_background()
 
-temp = Temperature(client)
-moisture = Moisture(client)
+temp = Temperature()
+temp.client = client
+moisture = Moisture()
+moisture.client = client
 
 scheduler.SCH_Add_Task(temp.readTemperature,3000,5000)
 scheduler.SCH_Add_Task(moisture.readMoisture,3000,5000)
