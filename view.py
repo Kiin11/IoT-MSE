@@ -44,11 +44,11 @@ def set_text_value_B(str):
     # txtB.insert(tk.END, str)
     pass
 
-def set_text_label_A(str):
-    labelA = 'Temperarture: ' + str
+def set_text_label_A(value):
+    labelA = 'Temperarture: ' + str(value)
 
-def set_text_label_B(str):
-    labelB = 'Moisture: ' + str
+def set_text_label_B(value):
+    labelB = 'Moisture: ' + str(value)
 
 
 window = tk.Tk()
