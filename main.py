@@ -38,10 +38,10 @@ def disconnected(client):
 
 def message(client , feed_id , payload):
     print("Nhan du lieu: " + payload + " , feed id :" + feed_id)
-    # if feed_id == "button1":
-    #     setDevice1(ser,payload == "1")
-    # elif feed_id == "button2":
-    #     setDevice2(ser,payload == "1")
+    if feed_id == "button1":
+        setDevice1(ser,payload == "1")
+    elif feed_id == "button2":
+        setDevice2(ser,payload == "1")
     if(feed_id == "equation"):
         global_equation = payload
         print(global_equation)
