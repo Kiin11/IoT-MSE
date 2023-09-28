@@ -45,10 +45,10 @@ def set_text_value_B(str):
     pass
 
 def set_text_label_A(value):
-    labelA = 'Temperarture: ' + str(value)
+    labelA.config(text='Temperarture: ' + str(value))
 
 def set_text_label_B(value):
-    labelB = 'Moisture: ' + str(value)
+    labelB.config(text='Moisture: ' + str(value))
 
 
 window = tk.Tk()
