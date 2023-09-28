@@ -15,6 +15,6 @@ class Temperature:
         time.sleep(1)
         value = serial_read_data(ser)/100
         # view.set_text_value_A(value)
-        view.set_text_value_A(value)
+        view.set_text_label_A(value)
         self.client.publish("sensor1",value)
         # return serial_read_data(ser)
